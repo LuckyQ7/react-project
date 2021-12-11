@@ -1,0 +1,39 @@
+.icon-back {
+  color: #333;
+}
+.am-navbar {
+  background-color: rgb(231, 228, 228);
+  margin-top: -45px;
+}
+.cityList {
+  height: 100%;
+  padding-top: 45px;
+}
+.title {
+  font-size: 18px;
+  padding: 10px;
+  color: #ccc;
+}
+.city {
+  font-size: 18px;
+  padding: 10px;
+}
+
+.rightList {
+  position: absolute;
+  right: 10px;
+  top: 90px;
+  li {
+    margin-top: 5px;
+    font-size: 18px;
+    list-style: none;
+    padding: 2px;
+    font-weight: 400;
+  }
+}
+
+.active {
+  background-color: rgb(37, 156, 165);
+  border-radius: 50%;
+  text-align: center;
+}

@@ -1,0 +1,20 @@
+.mask {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(87, 87, 87);
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  opacity: 0.4;
+}
+
+.container {
+  z-index: 30;
+  position: absolute;
+  width: 100%;
+  background: #fff;
+}
+
+.bodyFixed {
+  overflow: hidden;
+}

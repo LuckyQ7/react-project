@@ -1,0 +1,25 @@
+.root {
+  display: flex;
+  height: 50px;
+  font-size: 22px;
+  text-align: center;
+  line-height: 50px;
+}
+.back {
+  width: 35%;
+  color: rgb(22, 162, 122);
+}
+
+.sure {
+  width: 65%;
+  color: #fff;
+  background-color: rgb(22, 162, 122);
+}
+
+.filterMore {
+  position: fixed;
+  bottom: 0px;
+  width: 80%;
+  background-color: #fff;
+  left: 83px;
+}

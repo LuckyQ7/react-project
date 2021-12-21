@@ -1,0 +1,219 @@
+.navBar {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  color: black;
+  margin-top: 0;
+  background-color: rgba(243, 236, 236, 0.1);
+  z-index: 99;
+}
+
+.content {
+  background-color: #f6f6f6;
+  padding-bottom: 50px;
+}
+
+.tag1 {
+  background-color: #e0f4f7;
+  padding: 2px;
+  color: #6bcade;
+  margin-right: 5px;
+  padding: 0 5px;
+}
+
+.titlePanle {
+  padding: 20px;
+  background-color: #fff;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.housePanle {
+  display: flex;
+  justify-content: space-around;
+  padding: 15px 0;
+}
+
+.houseTitle {
+  color: #ff653e;
+  font-weight: 600;
+  font-size: 20px;
+  text-align: center;
+}
+.houseText {
+  text-align: center;
+  color: #b6b6b6;
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.tags {
+  margin-top: 10px;
+}
+
+.roomTypeRow {
+  display: flex;
+  margin-top: 10px;
+  font-size: 16px;
+  color: #b2b2b2;
+}
+
+.roomTypeRow div {
+  width: 50%;
+}
+
+.roomTypeRow div span:nth-child(2) {
+  color: black;
+  font-weight: 500;
+}
+
+.houseMap {
+  margin-top: 10px;
+  background-color: #fff;
+}
+
+.houseMap h1 {
+  font-size: 18px;
+  font-weight: 500;
+  padding: 10px;
+}
+
+.houseMap .map {
+  height: 200px;
+  background-color: #ccc;
+}
+
+.houseSupporting {
+  background-color: #fff;
+  padding-bottom: 10px;
+}
+
+.houseSupporting h1 {
+  font-size: 18px;
+  font-weight: 600;
+  padding: 10px 10px 0 10px;
+}
+
+.houseSupporting div:nth-child(3) {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 10px;
+}
+
+.houseSupportingItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.houseSupportingItem span {
+  margin-top: 5px;
+}
+
+.houseGeneral {
+  margin-top: 10px;
+  background-color: #fff;
+}
+
+.houseGeneral h1 {
+  font-size: 18px;
+  font-weight: 600;
+  padding: 10px 10px 0 10px;
+}
+
+.houseGeneral div:nth-child(3) {
+  padding: 10px;
+  display: flex;
+}
+
+.houseGeneral div:nth-child(3) div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+  justify-content: center;
+}
+.houseGeneral div:nth-child(3) div:nth-child(2) span:nth-child(2) {
+  color: #ff6a40;
+}
+
+.houseGeneral div:nth-child(3) div:nth-child(3) {
+  margin-left: auto;
+}
+.houseGeneral div:nth-child(3) div:nth-child(3) span {
+  width: 75px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 5px;
+  color: #33b194;
+  border: 2px solid #33b194;
+  font-weight: 600;
+  font-size: 15px;
+}
+.houseGeneral p {
+  color: black;
+  line-height: 22px;
+  font-weight: 500;
+  padding: 10px;
+}
+.portrait {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.portrait img {
+  width: 100%;
+}
+
+.youLike {
+  margin-top: 10px;
+  background-color: #fff;
+  padding: 10px 10px 0 10px;
+}
+
+.youLike h1 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.footerButton {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  background-color: #fff;
+  width: 100%;
+  border-top: 1px solid #ccc;
+}
+
+.footerButton div {
+  width: 33%;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  font-size: 20px;
+}
+.footerButton div:nth-child(-n + 2) {
+  border-left: 1px solid #ccc;
+}
+
+.footerButton div:nth-child(3) {
+  background-color: #16a77a !important;
+  color: #fff !important;
+}
+
+.label {
+  width: 100px;
+  height: 30px px;
+  text-align: center;
+  line-height: 30px;
+}

@@ -10,7 +10,7 @@ import CityList from "./pages/CityList";
 import Home from "./pages/Home";
 import Maps from "./pages/Map";
 import Search from "./pages/Search";
-
+import HouseDetaile from "./pages/HouseDetaile";
 export default class App extends Component {
   render() {
     return (
@@ -22,6 +22,8 @@ export default class App extends Component {
           <Route path="/map" element={<Maps />}></Route>
           <Route path="/search" element={<Search />}></Route>
           <Route path="/home/*" element={<Home />}></Route>
+
+          <Route path="/detaile/:id" element={<HouseDetaile />}></Route>
         </Routes>
       </Router>
     );

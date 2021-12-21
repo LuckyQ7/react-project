@@ -1,0 +1,31 @@
+.item {
+  height: 50px;
+  font-size: 20px;
+  line-height: 50px;
+  text-align: center;
+  font-weight: 500;
+  position: relative;
+}
+
+.itemActive {
+  color: rgb(101, 201, 145);
+}
+.itemActive::after {
+  border-top: 5px solid rgb(101, 201, 145) !important;
+}
+
+.item::after {
+  content: "";
+  display: inline-table;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid black;
+  margin-left: 10px;
+  position: absolute;
+  top: 23px;
+}
+
+.root {
+  display: flex;
+  justify-content: space-around;
+}

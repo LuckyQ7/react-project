@@ -31,7 +31,7 @@ const tabBarItems = [
     {
         title: '找房',
         icon: 'icon-findHouse',
-        path: '/home/list'
+        path: '/search'
     },
     {
         title: '新闻',

@@ -1,0 +1,35 @@
+.navBar {
+  position: inherit;
+  margin-top: 0;
+  z-index: 99;
+  background-color: #fff;
+}
+
+.formItem {
+  height: 50px;
+  border-bottom: 1px solid #ccc;
+}
+
+.formItem input {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.link {
+  color: black;
+}
+.submit {
+  width: 100%;
+  background-color: rgb(238, 146, 162);
+  height: 50px;
+  border: none;
+  color: #fff;
+  font-size: 22px;
+}
+
+.error {
+  height: 30px;
+  line-height: 30px;
+  color: red;
+}

@@ -1,0 +1,45 @@
+.navBar {
+  margin-top: 0;
+  background-color: #fff;
+}
+
+.title {
+  color: #54bd9f;
+}
+
+.rentAdd {
+  background-color: #fff;
+  padding-bottom: 50px;
+  z-index: 99;
+}
+
+.rentAdd h1 {
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.backRit {
+  color: #ababab;
+}
+
+.item {
+  padding: 5px 0;
+  border-bottom: 1px solid #e0d7d7;
+}
+
+.price :global(.am-list-line .am-input-label-5) {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 14px;
+}
+
+:global(.am-list-item
+    .am-input-control
+    .fake-input-container
+    .fake-input-placeholder) {
+  text-align: left;
+}
+
+:global(.HouseSupportings_houseSupportingItem__3qsen) {
+  margin-bottom: 10px;
+}

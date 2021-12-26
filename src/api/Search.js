@@ -26,3 +26,31 @@ export const getHouseDetaile = (id) => {
     url: `/houses/${id}`,
   });
 };
+/**
+ * 获取房屋是否被收藏
+ */
+export const getHouseIsStar = (id) => {
+  return request({
+    method: "Get",
+    url: `/user/favorites/${id}`,
+  });
+};
+/**
+ * 取消收藏房屋
+ */
+export const cancelFavorite = (id) => {
+  return request({
+    method: "DELETE",
+    url: `/user/favorites/${id}`,
+  });
+};
+
+/**
+ * 收藏房屋
+ */
+export const incrementFavorite = (id) => {
+  return request({
+    method: "POST",
+    url: `/user/favorites/${id}`,
+  });
+};

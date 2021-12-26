@@ -29,13 +29,12 @@ class CityList extends Component {
     cityData: {},
     cityIndex: [],
     activeIndex: 0,
-    ref: "",
   };
 
   async componentDidMount() {
     await this.initCitys();
-    if (this.state.ref) {
-      this.state.ref.measureAllRows(); // 预先测量List所有的行
+    if (this.ref) {
+      this.ref.measureAllRows(); // 预先测量List所有的行
     }
   }
   formatCityData(list) {
@@ -127,7 +126,7 @@ class CityList extends Component {
       return (
         <li
           onClick={() => {
-            this.state.ref.scrollToRow(index);
+            this.ref.scrollToRow(index);
           }}
           className={activeIndex === index ? "active" : ""}
           key={item}
@@ -153,7 +152,7 @@ class CityList extends Component {
             return (
               <List
                 ref={(ref) => {
-                  this.state.ref = ref;
+                  this.ref = ref;
                 }}
                 width={width}
                 height={height}

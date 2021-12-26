@@ -3,14 +3,31 @@ import withRouter from "../../utils/hoc";
 import styles from "./index.module.css";
 class PickerFooter extends Component {
   render() {
-    const { onCancel, onSave, value, filterMore, children } = this.props;
+    const {
+      onCancel,
+      onSave,
+      value,
+      filterMore,
+      children,
+      type,
+      navigate,
+      handleRentAdd,
+      rentFooter,
+    } = this.props;
     return (
       <div
-        className={[styles.root, filterMore ? styles.filterMore : ""].join(" ")}
+        className={[
+          styles.root,
+          filterMore ? styles.filterMore : "",
+          rentFooter ? styles.footer : "",
+        ].join(" ")}
       >
         <div
           className={styles.back}
           onClick={() => {
+            if (type) {
+              return navigate("/renter");
+            }
             onCancel(value.type);
           }}
         >
@@ -19,6 +36,9 @@ class PickerFooter extends Component {
         <div
           className={styles.sure}
           onClick={() => {
+            if (type) {
+              return handleRentAdd();
+            }
             onSave(value);
           }}
         >

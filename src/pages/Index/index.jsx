@@ -10,30 +10,31 @@ import nv4 from "../../assets/images/nav-4.png";
 import "./index.scss";
 
 import getCurrentCity from "../../utils/index.js";
+import { baseURL } from "../../utils/base";
 
 const menus = [
   {
     id: 1,
     img: nv1,
-    path: "/home/list",
+    path: "/home/search",
     title: "整租",
   },
   {
     id: 2,
     img: nv2,
-    path: "/home/list",
+    path: "/home/search",
     title: "合租",
   },
   {
     id: 3,
     img: nv3,
-    path: "/home/map",
+    path: "/map",
     title: "去找房",
   },
   {
     id: 4,
     img: nv4,
-    path: "/home/rent",
+    path: "/renter",
     title: "去出租",
   },
 ];
@@ -128,7 +129,7 @@ class Index extends Component {
       return (
         <img
           key={item.id}
-          src={`http://localhost:8080${item.imgSrc}`}
+          src={baseURL + item.imgSrc}
           alt=""
           style={{ width: "100%", verticalAlign: "top", height: "212px" }}
         />
@@ -156,7 +157,7 @@ class Index extends Component {
         <WingBlank key={item.id}>
           <div className="newsItem">
             <div className="newsImg">
-              <img src={"http://localhost:8080" + item.imgSrc} alt="" />
+              <img src={baseURL + item.imgSrc} alt="" />
             </div>
             <div className="newText">
               <div className="newTitle">{item.title}</div>
@@ -213,7 +214,7 @@ class Index extends Component {
                   <span>{dataItem.desc}</span>
                 </div>
                 <div className="dataImg">
-                  <img src={"http://localhost:8080" + dataItem.imgSrc} alt="" />
+                  <img src={baseURL + dataItem.imgSrc} alt="" />
                 </div>
               </div>
             )}

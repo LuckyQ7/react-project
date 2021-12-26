@@ -23,3 +23,17 @@
 .houseList {
   padding-top: 45px;
 }
+
+.backTop {
+  position: fixed;
+  bottom: 100px;
+  right: 10px;
+  color: pink;
+  z-index: 999;
+  width: 80px;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

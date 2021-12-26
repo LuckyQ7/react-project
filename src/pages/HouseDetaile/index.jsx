@@ -1,75 +1,26 @@
 import React, { Component } from "react";
-
+// 组件
 import withRouter from "../../utils/hoc";
 import NavHeader from "../../components/NavHeader/index";
 import HouseList from "../../components/HouseList/index";
-
+import Supporting from "../../components/HouseSupportings";
+// 第三方组件库
 import { Map } from "react-bmapgl";
-import { Carousel } from "antd-mobile";
-
+import { Carousel, Toast } from "antd-mobile";
+// API
 import { baseURL } from "../../utils/base";
-import { getHouseDetaile } from "../../api/Search";
-
+import {
+  getHouseDetaile,
+  getHouseIsStar,
+  incrementFavorite,
+  cancelFavorite,
+} from "../../api/Search";
+// CSS
 import styles from "./index.module.css";
-
+// IMAGE
 import portrait from "../../assets/images/portrait.jpg";
-
+// NavHeader右侧图标
 const rightContent = <i className="iconfont icon-share" />;
-
-// 所有房屋配置项
-const houseSupportings = [
-  {
-    id: 1,
-    name: "衣柜",
-    icon: "icon-wardrobe",
-  },
-  {
-    id: 2,
-    name: "洗衣机",
-    icon: "icon-wash",
-  },
-  {
-    id: 3,
-    name: "空调",
-    icon: "icon-air",
-  },
-  {
-    id: 4,
-    name: "天然气",
-    icon: "icon-gas",
-  },
-  {
-    id: 5,
-    name: "冰箱",
-    icon: "icon-ref",
-  },
-  {
-    id: 6,
-    name: "暖气",
-    icon: "icon-Heat",
-  },
-  {
-    id: 7,
-    name: "电视",
-    icon: "icon-vid",
-  },
-  {
-    id: 8,
-    name: "热水器",
-    icon: "icon-heater",
-  },
-  {
-    id: 9,
-    name: "宽带",
-    icon: "icon-broadband",
-  },
-  {
-    id: 10,
-    name: "沙发",
-    icon: "icon-sofa",
-  },
-];
-
 // 猜你喜欢
 const recommendHouses = [
   {
@@ -97,9 +48,9 @@ const recommendHouses = [
     tags: ["集中供暖"],
   },
 ];
-
+// 获取百度地图实例
 const BMapGL = window.BMapGL;
-
+// 百度地图覆盖物样式
 const labelStyle = {
   cursor: "pointer",
   border: "0px solid rgb(255,0,0)",
@@ -118,10 +69,13 @@ class HouseDetaile extends Component {
     houseDetaile: {},
     coord: {},
     supporting: [],
+    isFavorite: false,
   };
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     this.initHouseDetaile();
+    this.initHouseStar();
   }
 
   // 获取房屋详情
@@ -146,6 +100,47 @@ class HouseDetaile extends Component {
     } catch (error) {}
   };
 
+  // 检测房屋是否被收藏
+  initHouseStar = async () => {
+    try {
+      const { id } = this.props.params;
+      const { data: res } = await getHouseIsStar(id);
+      if (res.status === 400) {
+        this.props.navigate("/login");
+      } else {
+        const { isFavorite } = res.body;
+        this.setState({
+          isFavorite,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // 收藏、取消收藏
+  handleStar = async () => {
+    try {
+      const { id } = this.props.params;
+      const { isFavorite } = this.state;
+      if (isFavorite) {
+        // 取消收藏
+        const { data: res } = await cancelFavorite(id);
+        if (res.status === 200) {
+          Toast.info("取消收藏");
+          this.initHouseStar();
+        }
+      } else {
+        const { data: res } = await incrementFavorite(id);
+        if (res.status === 200) {
+          Toast.info("收藏成功");
+          this.initHouseStar();
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   // 渲染轮播图
   renderSwipers = () => {
     return this.state.swipers.map((item, index) => {
@@ -162,26 +157,10 @@ class HouseDetaile extends Component {
   // 渲染房屋配套
   renderHouseSupports = () => {
     const { supporting } = this.state;
-
-    if (supporting.length > 0) {
-      const supportingTemp = [];
-      houseSupportings.forEach((item) => {
-        if (supporting.includes(item.name)) {
-          supportingTemp.push(item);
-        }
-      });
-      console.log(supportingTemp);
-      return supportingTemp.map((item) => {
-        return (
-          <div className={styles.houseSupportingItem} key={item.id}>
-            <i className={["iconfont", item.icon].join(" ")}></i>
-            <span>{item.name}</span>
-          </div>
-        );
-      });
-    } else {
-      return "暂无";
-    }
+    console.log(supporting);
+    return (
+      <Supporting supporting={supporting} type={"houseDetaile"}></Supporting>
+    );
   };
 
   // 渲染猜你喜欢房屋列表
@@ -214,8 +193,7 @@ class HouseDetaile extends Component {
   };
 
   render() {
-    const { houseDetaile, coord } = this.state;
-    console.log(houseDetaile);
+    const { houseDetaile, coord, isFavorite } = this.state;
     return (
       <div className={styles.content}>
         <NavHeader navBar={styles.navBar} rightContent={rightContent}>
@@ -303,7 +281,7 @@ class HouseDetaile extends Component {
         <div className={styles.houseSupporting}>
           <h1>房屋配套</h1>
           <div className="line"></div>
-          <div>{this.renderHouseSupports()}</div>
+          {this.renderHouseSupports()}
         </div>
         {/* 房源概况 */}
         <div className={styles.houseGeneral}>
@@ -337,7 +315,10 @@ class HouseDetaile extends Component {
 
         {/* 底部按钮 */}
         <div className={styles.footerButton}>
-          <div>
+          <div
+            className={isFavorite ? styles.star : ""}
+            onClick={this.handleStar}
+          >
             <i className="iconfont icon-coll"></i>
             收藏
           </div>

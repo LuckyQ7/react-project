@@ -1,0 +1,23 @@
+.houseSupportingItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.houseSupportingItem span {
+  margin-top: 5px;
+}
+
+.supporting {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.activeSupport {
+  color: rgb(223, 118, 135);
+}

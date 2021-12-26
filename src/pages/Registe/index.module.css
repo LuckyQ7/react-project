@@ -1,0 +1,21 @@
+.navBar {
+  position: inherit;
+  margin-top: 0;
+  z-index: 99;
+  background-color: #fff;
+}
+
+.formItem {
+  height: 50px;
+  border-bottom: 1px solid #ccc;
+}
+
+.formItem input {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.link {
+  color: black;
+}

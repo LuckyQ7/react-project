@@ -33,7 +33,27 @@ class Search extends Component {
   componentDidMount() {
     this.initCurrentCity();
     this.onFilter();
+    window.scrollTo(0, 0);
   }
+
+  componentWillUnmount() {
+    clearTimeout(this.timer);
+  }
+
+  timer = null;
+  windowScroll = () => {
+    try {
+      clearTimeout(this.timer);
+      window.addEventListener("scroll", () => {
+        this.timer = setTimeout(() => {
+          console.log(1213);
+        }, 1000);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   onFilter = async (value, start = 1, end = 20) => {
     try {
       Toast.loading("加载中", 0, null, true);
@@ -138,6 +158,7 @@ class Search extends Component {
       );
     }
   };
+
   render() {
     const { currentCity, count } = this.state;
     return (
@@ -162,36 +183,45 @@ class Search extends Component {
         </Sticky>
 
         <div className={styles.houseList}>
-          <InfiniteLoader
-            isRowLoaded={this.isRowLoaded}
-            loadMoreRows={this.loadMoreRows}
-            rowCount={count}
-          >
-            {({ onRowsRendered, registerChild  }) => (
-              <WindowScroller>
-                {({ isScrolling, scrollTop, height }) => {
-                  return (
-                    <AutoSizer>
-                      {({ width }) => (
-                        <List
-                          onRowsRendered={onRowsRendered} // 滚动加载器
-                          ref={registerChild} // 刷新数据
-                          autoHeight
-                          isScrolling={isScrolling}
-                          width={width}
-                          height={height} // 不知道为啥高度获取不到
-                          rowCount={count} // 总数
-                          rowHeight={120} // 动态计算每行的高度
-                          rowRenderer={this.rowRenderer} // 行渲染
-                          scrollTop={scrollTop}
-                        />
-                      )}
-                    </AutoSizer>
-                  );
-                }}
-              </WindowScroller>
-            )}
-          </InfiniteLoader>
+          {count > 0 ? (
+            <InfiniteLoader
+              isRowLoaded={this.isRowLoaded}
+              loadMoreRows={this.loadMoreRows}
+              rowCount={count}
+            >
+              {({ onRowsRendered, registerChild }) => (
+                <WindowScroller>
+                  {({ isScrolling, scrollTop, height }) => {
+                    return (
+                      <AutoSizer>
+                        {({ width }) => (
+                          <List
+                            onRowsRendered={onRowsRendered} // 滚动加载器
+                            ref={registerChild} // 刷新数据
+                            autoHeight
+                            isScrolling={isScrolling}
+                            width={width}
+                            height={count * 120} // 不知道为啥高度获取不到
+                            rowCount={count} // 总数
+                            rowHeight={120} // 动态计算每行的高度
+                            rowRenderer={this.rowRenderer} // 行渲染
+                            scrollTop={scrollTop}
+                          />
+                        )}
+                      </AutoSizer>
+                    );
+                  }}
+                </WindowScroller>
+              )}
+            </InfiniteLoader>
+          ) : (
+            ""
+          )}
+        </div>
+
+        <div className={styles.backTop} onClick={() => window.scrollTo(0, 0)}>
+          <i className="iconfont icon-backTop"></i>
+          返回顶部
         </div>
       </div>
     );

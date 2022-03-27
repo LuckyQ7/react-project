@@ -53,26 +53,7 @@ class Home extends Component {
   state = {
     selectedTab: this.props.location.pathname,
   };
-  componentDidMount() {
-    if (
-      navigator.userAgent.match(/Android/i) ||
-      navigator.userAgent.match(/webOS/i) ||
-      navigator.userAgent.match(/iPhone/i) ||
-      navigator.userAgent.match(/iPad/i) ||
-      navigator.userAgent.match(/iPod/i) ||
-      navigator.userAgent.match(/BlackBerry/i) ||
-      navigator.userAgent.match(/Windows Phone/i)
-    ) {
-      alert("baby", "龙凤最好最漂亮最温柔最体贴最美丽最善解人意对不对？", [
-        { text: "对", onPress: () => Toast.info("我也觉得") },
-        { text: "对", onPress: () => Toast.info("我也觉得") },
-      ]);
-    } else {
-      Toast.info("请用移动设备打开此页面", 1, () => {
-        window.close();
-      });
-    }
-  }
+  componentDidMount() {}
   // 更新的生命周期钩子
   componentDidUpdate(prevProps) {
     if (prevProps.location.pathname !== this.props.location.pathname) {
